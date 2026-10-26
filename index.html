@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="cat-icon.svg">
+  <title>Tole Gallery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="Tole Gallery home">
+        <span class="wordmark-icon"><img src="logo-photo.png" alt="Cat photo" title="Cat photo"></span>
+        <span>Tole Gallery</span>
+      </a>
+      <span class="saved-indicator"><span class="saved-dot"></span> Saved on this device</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">YOUR PERSONAL COLLECTION</p>
+      <h1 id="page-title">A place for the things<br class="desktop-break"> you want to keep.</h1>
+      <p class="intro-copy">Gather your photos, GIFs, videos, words, and favorite links into little collections of your own.</p>
+    </section>
+
+    <section class="collection-area" aria-label="Your collections">
+      <div class="collection-heading">
+        <div>
+          <p class="section-label">YOUR TABS</p>
+          <h2 id="collection-title">My Collection</h2>
+        </div>
+        <button class="button button-outline" id="new-tab-button" type="button"><span aria-hidden="true">＋</span> New tab</button>
+      </div>
+      <div class="tabs-wrap">
+        <nav class="tabs" id="tabs" aria-label="Collection tabs"></nav>
+      </div>
+
+      <div class="content-toolbar">
+        <div>
+          <h3 id="item-count">Your keepsakes</h3>
+          <p class="toolbar-hint">Only you can see what you save here.</p>
+        </div>
+        <div class="add-actions">
+          <button class="button button-outline" id="add-words-button" type="button"><span aria-hidden="true">＋</span> Add words</button>
+          <button class="button button-outline" id="add-link-button" type="button"><span aria-hidden="true">＋</span> Save link</button>
+          <button class="button button-primary" id="upload-button" type="button"><span aria-hidden="true">↑</span> Add photos &amp; videos</button>
+          <input id="photo-input" type="file" accept="image/*,video/*" multiple hidden>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer-note">Your collection stays saved in this browser on this device.</footer>
+  </main>
+
+  <dialog class="dialog" id="tab-dialog">
+    <form method="dialog" id="tab-form">
+      <div class="dialog-heading">
+        <p class="eyebrow">MAKE IT YOURS</p>
+        <button class="icon-button dialog-close" type="button" aria-label="Close">×</button>
+      </div>
+      <h2>Create a tab</h2>
+      <p class="dialog-copy">Give this collection a name. You can make a tab for anything.</p>
+      <label class="field-label" for="tab-name">Tab name</label>
+      <input class="text-input" id="tab-name" name="name" maxlength="40" placeholder="e.g. Summer memories" required autocomplete="off">
+      <div class="dialog-actions">
+        <button class="button button-outline dialog-close" type="button">Cancel</button>
+        <button class="button button-primary" id="create-tab-button" value="default">Create tab</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="dialog" id="words-dialog">
+    <form method="dialog" id="words-form">
+      <div class="dialog-heading">
+        <p class="eyebrow">ADD TO YOUR COLLECTION</p>
+        <button class="icon-button dialog-close" type="button" aria-label="Close">×</button>
+      </div>
+      <h2>Save some words</h2>
+      <p class="dialog-copy">A thought, a quote, a little reminder—whatever you want to keep.</p>
+      <label class="field-label" for="words-title">Title <span class="optional">(optional)</span></label>
+      <input class="text-input" id="words-title" name="title" maxlength="80" placeholder="Give it a title">
+      <label class="field-label" for="words-body">Your words</label>
+      <textarea class="text-input text-area" id="words-body" name="body" maxlength="5000" placeholder="Write something to remember…" required></textarea>
+      <div class="dialog-actions">
+        <button class="button button-outline dialog-close" type="button">Cancel</button>
+        <button class="button button-primary" id="save-words-button" value="default">Save words</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="dialog" id="link-dialog">
+    <form method="dialog" id="link-form">
+      <div class="dialog-heading">
+        <p class="eyebrow">ADD TO YOUR COLLECTION</p>
+        <button class="icon-button dialog-close" type="button" aria-label="Close">×</button>
+      </div>
+      <h2>Save a link</h2>
+      <p class="dialog-copy">Keep a website handy and open it whenever you like.</p>
+      <label class="field-label" for="link-title">Name <span class="optional">(optional)</span></label>
+      <input class="text-input" id="link-title" name="title" maxlength="80" placeholder="e.g. Favorite recipe">
+      <label class="field-label" for="link-url">Web address</label>
+      <input class="text-input" id="link-url" name="url" maxlength="2048" placeholder="https://example.com" required autocomplete="url" inputmode="url">
+      <p class="input-hint">Use a website address beginning with http:// or https://.</p>
+      <div class="dialog-actions">
+        <button class="button button-outline dialog-close" type="button">Cancel</button>
+        <button class="button button-primary" id="save-link-button" value="default">Save link</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
